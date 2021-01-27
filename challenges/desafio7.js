@@ -4,7 +4,7 @@ db.movies.aggregate([
       $and: [
         { cast: { $exists: true } },
         { "imdb.rating": { $exists: true } },
-        { languages: { $all: ["English"] } },
+        { languages: "English" },
       ],
     },
   },
