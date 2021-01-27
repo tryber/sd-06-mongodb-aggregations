@@ -7,7 +7,7 @@ db.trips.aggregate([
   },
   {
     $project: {
-      bikeid: "$_id",
+      bikeId: "$_id",
       duracaoMedia: { $ceil: "$duracaoMedia" },
       _id: 0,
     },
