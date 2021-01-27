@@ -76,7 +76,7 @@ Então vamos lá aplicar seu conhecimento nesses cenários muito legais! 😉
 1. Clone o repositório
   * `git clone https://github.com/betrybe/sd-06-mongodb-aggregations`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-project-mongodb-aggregations`
+    * `cd sd-06-mongodb-aggregations`
 
 2. Crie uma branch a partir da branch `master`
   * Verifique que você está na branch `master`
