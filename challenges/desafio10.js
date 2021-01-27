@@ -3,7 +3,6 @@
 // Exiba a média de viagens ordenada de forma crescente.
 // Para arredondar a média use o $round.
 
-
 db.trips.aggregate([
   {
     $group: {
