@@ -1,5 +1,5 @@
 db.movies.aggregate([
-  { 
+  {
     $project: {
       title_split: { $split: ["$title", " "] },
       title: 1,
@@ -14,8 +14,8 @@ db.movies.aggregate([
   },
   {
     $match: {
-      title_size: 1
-    }
+      title_size: 1,
+    },
   },
   { $sort: { title: 1 } },
   {
