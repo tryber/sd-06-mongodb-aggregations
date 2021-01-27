@@ -1,4 +1,4 @@
-const favActors = ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey","George Clooney"];
+const favActors = ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"];
 
 db.movies.aggregate([
   {
@@ -14,8 +14,8 @@ db.movies.aggregate([
       "tomatoes.viewer.rating": 1,
       title: 1,
       num_favs: {
-        $size: 
-        { $setIntersection: ["$cast", favActors] }
+        $size:
+        { $setIntersection: ["$cast", favActors] },
       },
     },
   },
@@ -27,11 +27,11 @@ db.movies.aggregate([
     },
   },
   {
-    $skip: 24
+    $skip: 24,
   },
   { $limit: 1 },
   {
-    $project: 
+    $project:
     {
       _id: 0,
       title: 1,
