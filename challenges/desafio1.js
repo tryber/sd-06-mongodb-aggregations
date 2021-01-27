@@ -3,4 +3,4 @@ db.movies.aggregate([
     { $or: [{ rated: "PG" }, { rated: "G" }] }, { languages: { $all: ["English", "Spanish"] } },
   ] },
   },
-]).pretty();
+]);

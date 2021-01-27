@@ -13,4 +13,4 @@ db.movies.aggregate([
       ano: "$year",
     },
   },
-]).pretty();
+]);
