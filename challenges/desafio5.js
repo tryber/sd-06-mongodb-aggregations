@@ -1,7 +1,5 @@
 db.movies.aggregate([
-  {
-    $unwind: "$cast",
-  },
+  { $unwind: "$cast" },
   {
     $match: {
       countries: "USA",
@@ -29,9 +27,7 @@ db.movies.aggregate([
       title: -1,
     },
   },
-  {
-    $skip: 24,
-  },
+  { $skip: 24 },
   { $limit: 1 },
   {
     $project: {
