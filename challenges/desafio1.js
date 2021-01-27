@@ -7,4 +7,4 @@ db.movies.aggregate([
       { $and: [{ languages: "English" }, { languages: "Spanish" }] },
     ] },
   },
-]).pretty();
+]);
