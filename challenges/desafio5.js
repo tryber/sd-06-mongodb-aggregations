@@ -9,7 +9,7 @@ const favAct = [
 db.movies.aggregate([
   {
     $match: {
-      counties: "Estados Unidos",
+      countries: "Estados Unidos",
       "tomatoes.viewer.rating": {
         $gte: 3,
       },
