@@ -181,7 +181,7 @@ Temos, neste projeto, uma série de desafios com diferentes níveis de complexid
 
       - **Não se deve usar aspas simples** para especificar campos e/ou valores. Quando for necessário usar aspas, **use somente aspas duplas**;
 
-      - **Não se deve usar o comando `use aggregations`**, haja visto que **os testes já se conectam automaticamente à base `aggregations`**.
+      - **Não se deve usar o comando `use aggregations` _nos arquivos_ que você vai submeter**, haja visto que **os testes já se conectam automaticamente à base `aggregations`**.
 
 3. Faça isso até finalizar todos os desafios e depois siga as instruções de como entregar o projeto em [**Instruções para entregar seu projeto**](#instruções-para-entregar-seu-projeto).
 
