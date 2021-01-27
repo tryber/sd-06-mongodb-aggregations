@@ -15,6 +15,6 @@ db.movies.aggregate([
       votosIMDB: "$imdb.votes",
       ano: "$year",
       _id: 0,
-    }
-  }
+    },
+  },
 ]);
