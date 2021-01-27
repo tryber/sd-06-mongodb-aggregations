@@ -8,7 +8,16 @@ db.trips.aggregate([
   {
     $addFields: {
       convertToHours: 3600000,
-      duracaoMedia: { $multiply: [{ $toInt: "$duracaoMediaMilissegundos" }, "$convertToHours"] },
+    },
+  },
+  {
+    $addFields: {
+      duracaoMedia: { $divide: ["$duracaoMediaMilissegundos", "$convertToHours"] },
+    },
+  },
+  {
+    $project: {
+      duracaoMediaMilissegundos: 1, duracaoMedia: 1, convertToHours: 1,
     },
   },
   {
