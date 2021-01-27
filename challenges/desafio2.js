@@ -2,27 +2,27 @@ db.movies.aggregate([
   {
     $match: {
       "imdb.rating": { $gte: 7 },
-      "genres": {
+      genres: {
         $not: {
-          $in: ["Crime", "Horror"]
-        }
+          $in: ["Crime", "Horror"],
+        },
       },
-      "rated": {
-        $in: ["G", "PG"]
+      rated: {
+        $in: ["G", "PG"],
       },
-      "languages": {
-        $all: ["English", "Spanish"]
-      }
-    }
+      languages: {
+        $all: ["English", "Spanish"],
+      },
+    },
   },
   {
     $project: {
-      "titulo": "$title",
-      "avaliado": "$rated",
-      "notaIMDB": "$imdb.rating",
-      "votosIMDB": "$imdb.votes",
-      "ano": "$year",
+      titulo: "$title",
+      avaliado: "$rated",
+      notaIMDB: "$imdb.rating",
+      votosIMDB: "$imdb.votes",
+      ano: "$year",
       _id: 0,
-    }
-  }
+    },
+  },
 ]);
