@@ -6,6 +6,6 @@ db.movies.aggregate([
     },
   } },
   { $match: {
-    $expr: { $eq: [ { $size: "$title_split"}, 1] },
+    $expr: { $eq: [{ $size: "$title_split" }, 1] },
   } },
 ]);
