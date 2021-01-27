@@ -31,7 +31,4 @@ db.movies.aggregate([
       mediaIMDB: { $round: ["$mediaIMDB", 1] },
     },
   },
-  {
-    $count: "cast",
-  },
 ]);

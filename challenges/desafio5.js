@@ -25,7 +25,7 @@ db.movies.aggregate([
   },
   {
     $sort: {
-      num_favs: 1,
+      num_favs: -1,
       "tomatoes.viwer.rating": -1,
       title: -1,
     },
@@ -40,9 +40,6 @@ db.movies.aggregate([
     $project: {
       _id: 0,
       title: 1,
-      num_favs: 1,
-      cast: 1,
-      array_favs: 1,
     },
   },
 ]);
