@@ -16,7 +16,7 @@ db.movies.aggregate(
       },
     },
     {
-      $project: {
+      $addFields: {
         num_favs: { $size: { $setIntersection: [favorite, "$cast"] } },
       },
     },
