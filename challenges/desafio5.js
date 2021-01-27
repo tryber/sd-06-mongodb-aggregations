@@ -17,14 +17,14 @@ db.movies.aggregate([
   },
   {
     $addFields: {
-      "num_favs": {
-        $size: { $setIntersection: [ "$cast", favAct] },
+      num_favs: {
+        $size: { $setIntersection: ["$cast", favAct] },
       },
     },
   },
   {
     $sort: {
-      "num_favs": -1,
+      num_favs: -1,
       "tomatoes.viewer.rating": -1,
       title: -1,
     },
