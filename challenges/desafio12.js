@@ -6,11 +6,11 @@ db.trips.aggregate([
   } },
   { $group: {
     _id: "$startStationName",
-    total: { $sum: 1 },
+    count: { $sum: 1 },
   } },
   { $project: {
     nomeEstacao: "$_id",
-    total: 1,
+    total: "$count",
     _id: 0,
   } },
   { $sort: {

@@ -4,11 +4,11 @@ db.trips.aggregate([
   } },
   { $group: {
     _id: "$weekDayStart",
-    total: { $sum: 1 },
+    count: { $sum: 1 },
   } },
   { $project: {
     diaDaSemana: "$_id",
-    total: 1,
+    total: "$count",
     _id: 0,
   } },
   { $sort: {
