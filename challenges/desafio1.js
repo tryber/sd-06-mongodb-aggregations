@@ -11,7 +11,4 @@ db.movies.aggregate([
   {
     $match: { languages: { $all: ["English", "Spanish"] } },
   },
-  // {
-  //   $count: "results",
-  // },
-]).pretty();
+]);
