@@ -74,7 +74,7 @@ Então vamos lá aplicar seu conhecimento nesses cenários muito legais! 😉
 ## ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com/betrybe/sd-0x-mongodb-aggregations`.
+  * `git clone https://github.com/betrybe/sd-06-mongodb-aggregations`.
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd sd-0x-project-mongodb-aggregations`
 
