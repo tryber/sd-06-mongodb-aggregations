@@ -3,8 +3,9 @@ db.movies.aggregate([
     $match:
     {
       awards: {
-        $regex: "USA",
+        $regex: /won/i,
       },
+
       "tomatoes.viewer.rating": {
         $gte: 3,
       },
