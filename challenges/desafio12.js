@@ -6,9 +6,9 @@ db.trips.aggregate([
   },
   {
     $match: {
-      day_of_week: 5
-    }
-  }
+      day_of_week: 5,
+    },
+  },
   {
     $group: {
       _id: "$startStationName",
