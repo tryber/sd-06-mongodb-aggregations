@@ -2,8 +2,8 @@ db.movies.aggregate([
   {
     $match:
     {
-      countries: {
-        $eq: "USA",
+      awards: {
+        $regex: "USA",
       },
       "tomatoes.viewer.rating": {
         $gte: 3,
