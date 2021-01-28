@@ -1,19 +1,17 @@
-db.air_alliances.aggregate([
-  { $unwind: "$airlines" },
+db.air_routes.aggregate([
+  { $match: { airplane: { $in: ["747", "380"] } } },
   { $lookup: {
-    from: "air_routes",
-    let: { companies: "$airlines" },
+    from: "air_alliances",
+    let: { airlineName: "$airline.name" },
     pipeline: [
-      { $match: {
-        $expr: { $eq: ["$airline.name", "$$companies"] },
-        airplane: { $in: ["747", "380"] },
-      } },
+      { $unwind: "$airlines" },
+      { $match: { $expr: { $eq: ["$airlines", "$$airlineName"] } } },
     ],
-    as: "allCompanies",
+    as: "alliance",
   } },
-  { $unwind: "allCompanies" },
+  { $unwind: "$alliance" },
   { $group: {
-    _id: "$name",
+    _id: "$alliance.name",
     totalRotas: { $sum: 1 },
   } },
   { $sort: { totalRotas: -1 } },
