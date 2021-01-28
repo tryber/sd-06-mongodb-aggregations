@@ -8,7 +8,7 @@ db.trips.aggregate([
   {
     $group: {
       _id: "$diaDaSemana",
-      diaDaSemana: {$first: "$diaDaSemana"},
+      diaDaSemana: { $first: "$diaDaSemana" },
       total: { $sum: 1 },
     },
   },
