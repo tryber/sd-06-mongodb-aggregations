@@ -7,7 +7,7 @@ db.trips.aggregate([
       { $group: { _id: "$dia", totalX: { $sum: 1 } } },
       { $sort: { totalX: -1 } },
       { $limit: 1 },
-      { $match: { _id: { $eq: { $dayOfWeek: "$$tripDate" } } } },
+      { $match: { $expr: { $eq: [{ $dayOfWeek: "$$tripDate" }, "$_id"] } } },
     ],
     as: "tripsInMaxDay",
   } },
