@@ -2,7 +2,6 @@ db.movies.aggregate([
   {
     $match: {
       awards: { $regex: /win/i },
-      "imdb.rating": { $gt: 0 },
     },
   },
   {
