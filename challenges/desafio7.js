@@ -1,6 +1,9 @@
 db.movies.aggregate([
   {
-    $match: { "imdb.rating": { $gt: 0 }, cast: { $exists: true } },
+    $match: {
+      cast: { $exists: true },
+      languages: { $in: ["English"] },
+    },
   },
   {
     $unwind: "$cast",
