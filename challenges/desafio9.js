@@ -1,4 +1,4 @@
-db.tripps.aggregate([
+db.trips.aggregate([
   { $match: { birthYear: { $ne: "" } } },
   { $addFields: { intYear: { $toInt: "$birthYear" } } },
   {
