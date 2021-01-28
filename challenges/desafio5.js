@@ -20,7 +20,7 @@ db.movies.aggregate([
     {
       title: 1,
       "tomatoes.viewer.rating": 1,
-      intersection:  1,
+      intersection: 1,
       num_favs: { $size: "$intersection" },
     },
   },
