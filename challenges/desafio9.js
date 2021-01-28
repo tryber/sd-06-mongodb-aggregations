@@ -1,11 +1,12 @@
 db.tripps.aggregate([
-  { $match: { birthYear: { $exists: 1, $ne: "" } } },
+  { $match: { birthYear: { $ne: "" } } },
+  { $addFields: { intYear: { $toInt: "$birthYear" } } },
   {
     $group: {
       _id: null,
-      maiorAnoNascimento: { $max: { $toInt: "birthYear" } },
-      menorAnoNascimento: { $min: { $toInt: "birthYear" } },
+      maiorAnoNascimento: { $max: "$intYear" },
+      menorAnoNascimento: { $min: "$intYear" },
     },
   },
-  { $project: { _id: 0, maiorAnoNascimento: 1, menorAnoNascimento: 1 } },
+  { $project: { _id: 0 } },
 ]);
