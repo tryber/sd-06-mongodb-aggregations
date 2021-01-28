@@ -1,4 +1,4 @@
-db.air_alliance.aggregate([
+db.air_alliances.aggregate([
   { $lookup: {
     from: "air_routes",
     localField: "airlines",
