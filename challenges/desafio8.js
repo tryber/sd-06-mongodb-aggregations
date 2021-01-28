@@ -26,9 +26,6 @@ db.air_alliances.aggregate([
     },
   },
   {
-    $unwind: "$alliance",
-  },
-  {
     $sort: {
       "alliance.totalRotas": -1,
     },
@@ -37,9 +34,12 @@ db.air_alliances.aggregate([
     $limit: 1,
   },
   {
+    $unwind: "$alliance",
+  },
+  {
     $project: {
-      _id: "alliance._id",
-      totalRotas: "alliance.totalRotas",
+      _id: "$alliance._id",
+      totalRotas: "$alliance.totalRotas",
     },
   },
 ]);
