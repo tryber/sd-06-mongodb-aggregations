@@ -16,6 +16,7 @@ const aggregation = [
       },
 
     },
+  }
     { 
       $project: {
         titulo: '$title',
@@ -29,6 +30,5 @@ const aggregation = [
     {
       $sort: { ano:-1 , notaIMDB:-1, titulo:1}
     }
-  },
 ];
 db.movies.aggregate(aggregation);
