@@ -1,0 +1,1 @@
+db.trips.aggregate([{ $match: { birthYear: { $nin: ["", []] } } }, { $project: { ano: { $toInt: "$birthYear" } } }, { $group: { _id: null, maiorAnoNascimento: { $max: "$ano" }, menorAnoNascimento: { $min: "$ano" } } }, { $project: { _id: 0, maiorAnoNascimento: 1, menorAnoNascimento: 1 } }]);
