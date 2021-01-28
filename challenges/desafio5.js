@@ -6,7 +6,7 @@ db.movies.aggregate([
         { "tomatoes.viewer.rating": { $gte: 3 } },
         { cast: { $exists: true } },
       ],
-    },   
+    },
   },
   {
     $addFields: { favoritos: {
