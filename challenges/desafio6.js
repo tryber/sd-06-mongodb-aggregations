@@ -4,18 +4,21 @@ db.movies.aggregate([
       awards: { $regex: /won \d oscar/i } },
   },
   {
-    $unwind: "$imdb.rating",
+    $group: {
+      _id: null,
+      maior_rating: { $max: "$imdb.rating" },
+      menor_rating: { $min: "$imdb.rating" },
+      media_rating: { $avg: "$imdb.rating" },
+      desvio_padrao: { $stdDevSamp: "$imdb.rating" },
+    },
   },
   {
     $project: {
-      _id: 0,
-      rating: "$imdb.rating",
+      _id: false,
+      maior_rating: { $round: ["$maior_rating", 1] },
+      menor_rating: { $round: ["$menor_rating", 1] },
+      media_rating: { $round: ["$media_rating", 1] },
+      desvio_padrao: { $round: ["$desvio_padrao", 1] },
     },
   },
 ]);
-
-// {
-//   $sort: { "imdb.rating": -1 },
-// },
-
-// db.movies.find({ awards: { $regex: /won \d oscar/i } }, { _id: 0, title: 1, awards: 1 });
