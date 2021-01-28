@@ -17,4 +17,9 @@ db.trips.aggregate([
       duracaoMedia: { $round: [{ $divide: ["$avg_trip", 1000 * 60 * 60] }, 2] },
     },
   },
+  {
+    $sort: {
+      duracaoMedia: 1,
+    },
+  },
 ]);
