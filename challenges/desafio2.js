@@ -1,4 +1,4 @@
-const aggregation = [
+db.movies.aggregate([
   {
     $match:
     {
@@ -12,7 +12,7 @@ const aggregation = [
         $in: ["PG", "G"],
       },
       languages: {
-        $in: ["English", "Spanish"],
+        $all: ["English", "Spanish"],
       },
 
     },
@@ -28,5 +28,4 @@ const aggregation = [
     },
   },
 
-];
-db.movies.aggregate(aggregation);
+]);

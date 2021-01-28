@@ -1,9 +1,9 @@
-const aggregation = [
+db.movies.aggregate([
   {
     $match:
     {
       "imdb.rating": {
-        $lt: 7,
+        $gte: 7,
       },
       genres: {
         $nin: ["Crime", "Horror"],
@@ -12,7 +12,7 @@ const aggregation = [
         $in: ["PG", "G"],
       },
       languages: {
-        $in: ["English", "Spanish"],
+        $all: ["English", "Spanish"],
       },
     },
   },
@@ -29,5 +29,4 @@ const aggregation = [
   {
     $sort: { ano: -1, notaIMDB: -1, titulo: 1 },
   },
-];
-db.movies.aggregate(aggregation);
+]);
