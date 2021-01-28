@@ -12,23 +12,22 @@ const aggregation = [
         $in: ["PG", "G"],
       },
       languages: {
-        $in: ["PG", "G"],
+        $in: ["English", "Spanish"],
       },
-
     },
-  }
-    { 
-      $project: {
-        titulo: '$title',
-        avaliado: '$rated',
-        notaIMDB: '$imdb.rating',
-        votosIMDB: '$imdb.votes',
-        ano: '$year',
-        _id:0
-            } 
+  },
+  {
+    $project: {
+      titulo: "$title",
+      avaliado: "$rated",
+      notaIMDB: "$imdb.rating",
+      votosIMDB: "$imdb.votes",
+      ano: "$year",
+      _id: 0,
     },
-    {
-      $sort: { ano:-1 , notaIMDB:-1, titulo:1}
-    }
+  },
+  {
+    $sort: { ano: -1, notaIMDB: -1, titulo: 1 },
+  },
 ];
 db.movies.aggregate(aggregation);
