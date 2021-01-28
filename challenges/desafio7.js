@@ -4,13 +4,11 @@ db.movies.aggregate([
     languages: "English",
   } },
   { $unwind: "$cast" },
-  {
-    $group: {
-      _id: "$cast",
-      numeroFilmes: { $sum: 1 },
-      mediaIMDB: { $avg: "imdb.rating" },
-    },
-  },
+  { $group: {
+    _id: "$cast",
+    numeroFilmes: { $sum: 1 },
+    mediaIMDB: { $avg: "$imdb.rating" },
+  } },
   {
     $project: {
       _id: 1,
