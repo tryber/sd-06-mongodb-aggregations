@@ -9,7 +9,7 @@ db.trips.aggregate([
       _id: "$usertype",
       duracaoMedia_unround: {
         $avg: {
-          $divide: ["$duracaoViagem", 3600000],
+          $divide: ["$duracaoViagem", 1000 * 60 * 60],
         },
       },
     },
@@ -21,5 +21,5 @@ db.trips.aggregate([
       duracaoMedia: { $round: ["$duracaoMedia_unround", 2] },
     },
   },
-  { $sort: { duracaoMedia: -1 } },
+  { $sort: { duracaoMedia: 1 } },
 ]);
