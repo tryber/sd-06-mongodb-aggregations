@@ -3,7 +3,7 @@ const aggregation = [
     $match:
     {
       "imdb.rating": {
-        $lt: 7,
+        $gte: 7,
       },
       genres: {
         $nin: ["Crime", "Horror"],
@@ -12,20 +12,21 @@ const aggregation = [
         $in: ["PG", "G"],
       },
       languages: {
-        $in: ["PG", "G"],
+        $in: ["English", "Spanish"],
       },
 
     },
-    { 
-      $project: {
-        titulo: '$title',
-        avaliado: '$rated',
-        notaIMDB: '$imdb.rating',
-        votosIMDB: '$imdb.votes',
-        ano: '$year',
-        _id:0
-            } 
-    }
   },
+  {
+    $project: {
+      titulo: "$title",
+      avaliado: "$rated",
+      notaIMDB: "$imdb.rating",
+      votosIMDB: "$imdb.votes",
+      ano: "$year",
+      _id: 0,
+    },
+  },
+
 ];
 db.movies.aggregate(aggregation);
