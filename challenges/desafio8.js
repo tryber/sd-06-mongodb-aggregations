@@ -7,6 +7,7 @@ db.air_routes.aggregate([
     as: "alliance",
   } },
   { $match: { "alliance.name": { $exists: true } } },
+  { $unwind: "$alliance" },
   { $group: {
     _id: "$alliance.name",
     totalRotas: { $sum: 1 },
