@@ -15,4 +15,4 @@ db.movies.aggregate([
       },
     },
   },
-]).itcount();
+]);
