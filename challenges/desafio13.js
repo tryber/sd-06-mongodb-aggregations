@@ -5,13 +5,13 @@ db.trips.aggregate([
         $divide: [
           { $subtract: ["$stopTime", "$startTime"] },
           { $multiply: [60, 1000] },
-        ]
+        ],
       },
       date: {
         $dateToParts: {
           date: "$startTime",
         },
-      }
+      },
     },
   },
   {
@@ -25,7 +25,7 @@ db.trips.aggregate([
     $group: {
       _id: null,
       duracao: { $avg: "$dif" },
-    }
+    },
   },
   {
     $project: {
