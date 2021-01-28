@@ -2,7 +2,7 @@ db.movies.aggregate([
   { $match: {
     $and: [
       { awards: { $exists: true } },
-      { awards: { $regex: /Oscar/ } },
+      { awards: { $regex: /Won [\d\D] Oscar/ } },
     ],
   } },
   { $project: {
