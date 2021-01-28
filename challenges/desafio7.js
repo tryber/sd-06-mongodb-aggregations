@@ -11,8 +11,8 @@ db.movies.aggregate([
     },
   },
   {
-    $project: { 
-      _id : "John Wayne",
+    $project: {
+      _id : 1,
       numeroFilmes : 1,
       mediaIMDB : { $round: ["$mediaIMDB", 1] },
     },
