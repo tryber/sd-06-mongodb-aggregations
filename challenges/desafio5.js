@@ -3,14 +3,14 @@ db.movies.aggregate([
     $match: {
       $and: [
         { countries: { $eq: "USA" } },
-        { "tomatoes.viewer.rating": { $gte: 3} },
+        { "tomatoes.viewer.rating": { $gte: 3 } },
         { cast: { $exists: true } },
       ],
-    },        
+    },     
   },
   {
     $addFields: { favoritos: {
-        $setIntersection: [
+      $setIntersection: [
         [
           "Sandra Bullock",
           "Tom Hanks",
@@ -21,7 +21,7 @@ db.movies.aggregate([
         "$cast"],
     } },
   },
-  { $addFields: { num_favs: { $size:  "$favoritos" } } },
+  { $addFields: { num_favs: { $size: "$favoritos" } } },
   {
     $sort: { num_favs: -1, "tomatoes.viewer.rating": -1, title: -1 },
   },
