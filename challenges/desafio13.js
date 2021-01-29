@@ -17,6 +17,6 @@ db.trips.aggregate([
   } },
   { $project: {
     _id: 0,
-    duuracaoMediaEmMinutos: { $ceil: "$conversao" },
+    duracaoMediaEmMinutos: { $ceil: "$conversao" },
   } },
 ]);
