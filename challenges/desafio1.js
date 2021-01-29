@@ -16,4 +16,7 @@ db.movies.aggregate([
 // https://docs.mongodb.com/manual/reference/operator/update/currentDate/
 // https://docs.mongodb.com/manual/reference/operator/query/regex/#regex-case-insensitive
 // https://www.youtube.com/playlist?list=PLYxzS__5yYQmr3HQQJMPBMbKtMY37sdsv
-//
+// db.produtos.updateMany(
+//   { valorUnitario: { $exists: false } },
+//   { $set: { valorUnitario: NumberDecimal("0.00") } },
+// );
