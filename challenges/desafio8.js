@@ -1,34 +1,19 @@
 db.air_alliances.aggregate([
-  { $lookup: {
-    from: "air_routes",
-    as: "routes",
-    pipeline: [
-      {
-        $match: { airplane: { $in: ["747", "380"] } },
-      },
-      { $group: { _id: "$airline.id", total: { $sum: 1 } } }
-    ],
-  } },
-]);
-
-{ $group: { _id: "$routes", total: { $sum: "$routes.airline" } } },
-
-db.air_alliances.aggregate([
   { $unwind: "$airlines" },
   { $lookup: {
     from: "air_routes",
     as: "routes",
-    let: { name: "$airlines" },
+    let: { company: "$airlines" },
     pipeline: [
       { $match: { airplane: { $in: ["747", "380"] } } },
-      
-      { $match: {
-        $expr: {
-          $and: [
-            { $eq: [ "$routes.airlines.name",  "$$name" ] }
-          ]
-        }
-      } }
+      { $match: { $expr: { $eq: ["$airline.name", "$$company"] } } },
+      { $group: { _id: "$airline.name", total: { $sum: 1 } } },
     ],
   } },
-])
+  { $match: { routes: { $size: 1 } } },
+  { $unwind: "$routes" },
+  { $project: { _id: 0, alliance: "$name", name: "$airlines", routes: "$routes.total" } },
+  { $group: { _id: "$alliance", totalRotas: { $sum: "$routes" } } },
+  { $sort: { totalRotas: -1 } },
+  { $limit: 1 },
+]);
