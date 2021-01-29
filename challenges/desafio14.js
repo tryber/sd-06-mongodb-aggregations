@@ -1,7 +1,7 @@
 db.trips.aggregate([
   {
     $addFields: {
-      trip_avg: { $divide: [{ $subtract: ["$stopTime", "$startTime"] }, 600000] },
+      trip_avg: { $divide: [{ $subtract: ["$stopTime", "$startTime"] }, 60000] },
     },
   },
   {
