@@ -10,7 +10,8 @@ db.trips.aggregate([
     { conversaoTempo: { $divide: ["$media", 3600000] },
     } },
   { $project: {
-    _id: 1,
+    _id: 0,
+    tipo: "$_id",
     duracaoMedia: { $round: ["$conversaoTempo", 2] },
   } },
   { $sort: { duracaoMedia: 1 } },
