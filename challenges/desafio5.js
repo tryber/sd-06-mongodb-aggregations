@@ -55,16 +55,7 @@ db.aggregate([
     $addFields: {
       num_favs: {
         $size: {
-          $setIntersection: [
-            [
-              "Sandra Bullock",
-              "Tom Hanks",
-              "Julia Roberts",
-              "Kevin Spacey",
-              "George Clooney",
-            ],
-            "$cast",
-          ],
+          $setIntersection: [atoresFavoritos, "$cast"],
         },
       },
     },
