@@ -1,22 +1,23 @@
 db.trips.aggregate([
   {
-    $addFields: {
+    $project: {
       diaDaSemana: { $dayOfWeek: "$startTime" },
+      _id: 0,
     },
   },
   {
     $group: {
       _id: "$diaDaSemana",
-      count: { $sum: 1 },
+      total: { $sum: 1 },
     },
   },
   {
-    $project: { diaDaSemana: "$_id", total: "$count", _id: 0 },
+    $project: {
+      diaDaSemana: "$_id",
+      total: "$total",
+      _id: 0,
+    },
   },
-  {
-    $sort: { total: -1 },
-  },
-  {
-    $limit: 1,
-  },
+  { $sort: { total: -1 } },
+  { $limit: 1 },
 ]);
