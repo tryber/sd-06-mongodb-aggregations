@@ -17,12 +17,13 @@ Dica: utilize os operadores $split, $size e $sort para te auxiliar.
 Sua query deve retornar 8068 documentos.
 */
 
+// para separar as palavras: { $split: [ <string expression>, <delimiter> ] }
+// para agregar o título (array) a um campo chamado title_split
+// {$addFields: {<campo>: <valor>}}
+// tem que achar elementos em title_split cujo $size (length do array) seja 1
+
 db.movies.aggregate([
-  // para separar as palavras: { $split: [ <string expression>, <delimiter> ] }
-  // para agregar o título (array) a um campo chamado title_split
-  // {$addFields: {<campo>: <valor>}}
   { $addFields: { title_split: { $split: ["$title", " "] } } },
-  // tem que achar elementos em title_split cujo $size (length do array) seja 1
   { $match: { title_split: { $size: 1 } } },
   { $sort: { title_split: 1 } },
 ]);
