@@ -1,7 +1,7 @@
 db.movies.aggregate([
   {
     $match: {
-      languages: "English",
+      languages: { $all: ["English"] },
     },
   },
   {
@@ -21,5 +21,5 @@ db.movies.aggregate([
       mediaIMDB: { $round: ["$avg", 1] },
     },
   },
-  { $sort: { numeroFilmes: -1 } },
+  { $sort: { numeroFilmes: -1, _id: -1 } },
 ]);
