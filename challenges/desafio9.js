@@ -1,3 +1,4 @@
+use('aggregations');
 db.trips.aggregate([
   {
     $match: {
@@ -7,7 +8,7 @@ db.trips.aggregate([
       },
     },
   },
-  {
+   {
     $group: {
       _id: null,
       maiorAnoNascimento: { $max: { $toInt: "$birthYear" } },
