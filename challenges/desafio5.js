@@ -39,11 +39,11 @@ const atoresFavoritos = ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin 
 // $project pra trazer apenas o 'title'
 // $limit para trazer um só.
 
-db.aggregate([
+db.movies.aggregate([
   {
     $match:
     {
-      contries: "Estados Unidos",
+      countries: "Estados Unidos",
       "tomatoes.viewer.rating": { $gte: 3 },
       cast:
         {
@@ -52,8 +52,10 @@ db.aggregate([
     },
   },
   {
-    $addFields: {
-      num_favs: {
+    $addFields:
+    {
+      num_favs:
+      {
         $size: {
           $setIntersection: [atoresFavoritos, "$cast"],
         },
