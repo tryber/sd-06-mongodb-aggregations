@@ -43,7 +43,7 @@ db.movies.aggregate([
   {
     $match:
     {
-      countries: "Estados Unidos",
+      countries: { $all: ["USA"] },
       "tomatoes.viewer.rating": { $gte: 3 },
       cast:
         {
@@ -56,7 +56,8 @@ db.movies.aggregate([
     {
       num_favs:
       {
-        $size: {
+        $size:
+        {
           $setIntersection: [atoresFavoritos, "$cast"],
         },
       },
