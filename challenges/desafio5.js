@@ -1,12 +1,12 @@
 db.movies.aggregate([
   {
-    $addFields: { favs: ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"] }
+    $addFields: { favs: ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"] },
   },
   {
     $addFields: {
       num_favs: {
         $size: {
-          $setIntersection: ["$favs", "$cast"]
+          $setIntersection: ["$favs", "$cast"],
         },
       },
     },
@@ -16,28 +16,28 @@ db.movies.aggregate([
       $and: [
         {
           cast: {
-            $in: ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"]
+            $in: ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"],
           },
         },
         { countries: "USA" },
         {
           "tomatoes.viewer.rating": {
-            $gte: 3
+            $gte: 3,
           },
         },
       ],
     },
   },
   {
-    $sort: { num_favs: -1, "tomatoes.viewer.rating": -1, title: -1 }
+    $sort: { num_favs: -1, "tomatoes.viewer.rating": -1, title: -1 },
   },
   {
-    $project: { _id: 0, title: 1 }
+    $project: { _id: 0, title: 1 },
   },
   {
-    $skip: 24
+    $skip: 24,
   },
   {
-    $limit: 1
+    $limit: 1,
   },
 ]);
