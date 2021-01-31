@@ -14,7 +14,7 @@ db.trips.aggregate([
     duracaoMedia: {
       $avg: { $divide: [{
         $subtract: ["$stopTime", "$startTime"],
-      }, 60000] } } },
+      }, 1000 * 60] } } },
   },
   { $project: {
     _id: 0,
