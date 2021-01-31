@@ -14,7 +14,7 @@ db.air_alliances.aggregate([
     $match: {
       "air_routes_doc.airplane": {
         $in: ["747", "380"],
-      }
+      },
     },
   },
   {
