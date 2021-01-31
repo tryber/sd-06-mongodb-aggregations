@@ -12,9 +12,9 @@ db.trips.aggregate([
   { $group: {
     _id: "$bikeid",
     duracaoMedia: {
-      $avg: { $divide: [{
-        $subtract: ["$stopTime", "$startTime"],
-      }, 1000 * 60] } } },
+      $avg: { $divide: [
+        { $subtract: ["$stopTime", "$startTime"] }, 1000 * 60,
+      ] } } },
   },
   { $project: {
     _id: 0,
