@@ -23,5 +23,5 @@ db.movies.aggregate([
       "imdb.rating": -1,
       year: -1,
     },
-  }
+  },
 ]);
