@@ -1,7 +1,7 @@
 {
   "name": "sd-0x-mongodb-aggregations",
   "version": "1.0.0",
-  "description": "Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo e, se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀",
+  "description": "Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo e, se tiver qualquer dúvida, nos envie por Slack! #vqv :rocket:",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --no-inline-config --ext .js,.jsx --no-error-on-unmatched-pattern -c .eslintrc.json ."
@@ -21,12 +21,11 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "6.8.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-mongodb": "^1.0.0",
-    "eslint-plugin-sonarjs": "^0.5.0"
+    "eslint-plugin-mongodb": "^1.0.0"
   }
 }
