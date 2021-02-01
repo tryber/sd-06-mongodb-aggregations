@@ -1,8 +1,8 @@
 db.trips.aggregate([
   {
     $addFields: {
-      diaDaSemana: { $dayOfWeek: "$startTime" }
-    }
+      diaDaSemana: { $dayOfWeek: "$startTime" },
+    },
   },
   {
     $group: {
