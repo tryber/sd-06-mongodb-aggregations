@@ -1,6 +1,5 @@
-/*
-  Considerando esta lista, crie uma pipeline que retorne o title do vigésimo quinto filme da agregação que satisfaz as seguintes condições:
-*/
+// Considerando esta lista, crie uma pipeline que retorne o title do vigésimo quinto filme da
+// agregação que satisfaz as seguintes condições:
 db.movies.aggregate([
   {
     $match: {
@@ -12,14 +11,12 @@ db.movies.aggregate([
     },
   },
   {
-    /*
-      Crie um novo campo chamado num_favs, que represente quantos atores ou atrizes da nossa lista de favoritos aparecem no elenco (campo cast) do filme.
-    */
+    // Crie um novo campo chamado num_favs, que represente quantos atores ou atrizes da nossa lista
+    // de favoritos aparecem no elenco (campo cast) do filme.
     $addFields: {
       num_favs: {
-        /*
-          Dica: coloque a lista de atores e atrizes favoritos em uma variável e explore operadores como $size e $setIntersection.
-        */
+        // Dica: coloque a lista de atores e atrizes favoritos em uma variável e explore operadores
+        // como $size e $setIntersection.
         $size: {
           $setIntersection: [
             ["Sandra Bullock", "Tom Hanks", "Julia Roberts", "Kevin Spacey", "George Clooney"],
@@ -30,10 +27,8 @@ db.movies.aggregate([
     },
   },
   {
-    /*
-      Ordene os resultados por num_favs, tomatoes.viewer.rating e title, todos em ordem
-      decrescente.
-    */
+    // Ordene os resultados por num_favs, tomatoes.viewer.rating e title, todos em ordem
+    // decrescente.
     $sort: {
       num_favs: -1,
       "tomatoes.viewer.rating": -1,
