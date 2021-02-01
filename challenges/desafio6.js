@@ -5,27 +5,30 @@ db.movies.aggregate([
       awards: {
         $regex: /won/i,
       },
+    },
+  },
+  {
+    
+      },
+    },
+  },
+  {
+    $group:{
+      _id: null,
+      "maior_rating":{$max: "imdb.rating"},
+      "menor_rating":{$min:"imdb.rating"},
+      "media_rating":{ $avg:"maior_rating", "menor_rating"},
+      "desvio_padrao": {$stdDevSamp: "$imdb.rating"}
+      }
+    },
+    {
+      $project: {
+      _id: 0,
+      "maior_rating":1,
+      "menor_rating":1,
+      "media_rating":{ $round:[ "media_rating",1]},
+      "desvio_padrao": { $round:[ "desvio_padrao",1]}
 
-      "tomatoes.viewer.rating": {
-        $gte: 3,
-      },
-      cast: { $exists: 1 },
-    },
-  },
-  {
-    $addFields: {
-      num_favs: { $size: { $setIntersection: ["$cast", ["Sandra Bullock", "Julia Roberts",
-        "Tom Hanks", "Kevin Spacey", "George Clooney"]] },
-      },
-    },
-  },
-  {
-    $skip: 24,
-  },
-  {
-    $limit: 1,
-  },
-  {
-    $sort: { "tomatoes.viewer.rating": -1, title: -1 },
-  },
+      }
+    }
 ]);
