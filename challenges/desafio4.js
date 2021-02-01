@@ -1,5 +1,5 @@
-  // Crie uma pipeline que retorna documentos com o novo campo title_split, ela deve seguir as
-  // seguintes condições:
+// Crie uma pipeline que retorna documentos com o novo campo title_split, ela deve seguir as
+// seguintes condições:
 db.movies.aggregate([
   {
     // title_split deve conter uma lista de palavras presentes em title.
