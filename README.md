@@ -432,7 +432,7 @@ Dica: Utilize o operador [`$dayOfWeek`](https://docs.mongodb.com/manual/referenc
 O resultado da sua query deve ter o seguinte formato:
 
 ```javascript
-{ "nomeEstacao" : <nome_da_estacao>, "total" : <total_de_viagens> }
+{ "nomeEstacao" : <nome_da_estacao>, "C" : <total_de_viagens> }
 ```
 
 ### Desafio 13
