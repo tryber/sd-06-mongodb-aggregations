@@ -22,7 +22,7 @@ db.trips.aggregate([
     $group:
     {
       _id: "$usertype",
-      duracaoViagem:
+      duracaoMedia:
       {
         $avg:
         {
@@ -39,10 +39,10 @@ db.trips.aggregate([
     $project: {
       _id: 0,
       tipo: "$_id",
-      duracaoViagem: { $round: ["$duracaoViagem", 2] },
+      duracaoMedia: { $round: ["$duracaoMedia", 2] },
     },
   },
   {
-    $sort: { duracaoViagem: 1 },
+    $sort: { duracaoMedia: 1 },
   },
 ]);
