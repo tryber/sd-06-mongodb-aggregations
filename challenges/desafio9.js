@@ -2,7 +2,7 @@ db.trips.aggregate([
   {
     $match: {
       birthYear: {
-        $exists: true, $ne: ""
+        $exists: true, $ne: "",
       },
     },
   },
@@ -12,12 +12,12 @@ db.trips.aggregate([
       maiorAnoNascimento: {
         $max: {
           $toInt: "$birthYear",
-        }
+        },
       },
       menorAnoNascimento: {
         $min: {
           $toInt: "$birthYear",
-        }
+        },
       },
     },
   },
