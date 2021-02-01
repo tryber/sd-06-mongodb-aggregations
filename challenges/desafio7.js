@@ -3,7 +3,7 @@ db.movies.aggregate([
     $match:
     {
       cast: { $exists: 1 },
-      language: { $in: ["English"] },
+      language: "English",
     },
   },
   {
