@@ -8,11 +8,6 @@ db.movies.aggregate([
     },
   },
   {
-    
-      },
-    },
-  },
-  {
     $group:{
       _id: null,
       "maior_rating":{$max: "imdb.rating"},
