@@ -14,14 +14,10 @@ O resultado da sua query deve ter o seguinte formato:
 // somar +1 vez. $sort pta ordenar o maior $limit pra trazer apenas O maior
 
 db.trips.aggregate([
-  { $addFields: {
-    diaDaSemana: { $dayOfWeek: "$startTime" },
+  {
+    $addFields: { diaDaSemana: { $dayOfWeek: "$startTime" } },
   },
-  },
-  { $match: {
-    diaDaSemana: 5,
-  },
-  },
+  { $match: { diaDaSemana: 5 } },
   {
     $group: {
       _id: "$startStationName",
