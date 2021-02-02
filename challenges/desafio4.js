@@ -12,4 +12,9 @@ db.movies.aggregate([
       title_split: { $size: 1 },
     },
   },
+  {
+    $project: {
+      _id: 0,
+    },
+  },
 ]);
