@@ -33,5 +33,5 @@ db.movies.aggregate([{
     votosIMDB: 1,
     ano: 1,
   },
-}
+},
 ]);
