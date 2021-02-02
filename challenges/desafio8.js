@@ -9,5 +9,6 @@ db.air_alliances.aggregate([
       as: "routesMatch" },
   },
   { $group: { _id: "$name", totalRotas: { $sum: { $size: "$routesMatch" } } } },
+  { $sort: { totalRotas: -1 } },
   { $limit: 1 },
 ]);
