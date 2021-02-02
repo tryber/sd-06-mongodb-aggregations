@@ -5,4 +5,4 @@ db.movies.aggregate([{
     rated: { $in: ["PG", "G"] },
     languages: { $all: ["English", "Spanish"] },
   },
-}]);
+}])
