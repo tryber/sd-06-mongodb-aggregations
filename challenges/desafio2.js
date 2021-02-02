@@ -16,11 +16,10 @@ db.movies.aggregate([{
 },
 {
   $addFields: {
-    _id: 0,
     titulo: "$title",
     avaliado: "$rated",
-    notaIMDB: "imdb.rating",
-    votosIMDB: "imdb.votes",
+    notaIMDB: "$imdb.rating",
+    votosIMDB: "$imdb.votes",
     ano: "$year",
   },
 },
