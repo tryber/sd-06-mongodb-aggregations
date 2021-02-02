@@ -27,7 +27,7 @@ db.trips.aggregate([
   {
     $project: {
       _id: 0,
-      duracaoMediaEmMinutos: { $round: "$duracaoMediaEmMinutos" },
+      duracaoMediaEmMinutos: { $ceil: "$duracaoMediaEmMinutos" },
     },
   },
 ]).pretty();
