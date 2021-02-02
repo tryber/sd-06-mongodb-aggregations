@@ -1,7 +1,7 @@
 db.trips.aggregate([
   {
     $addFields: {
-      duracaoEmMinutos: { $divide: [{ $divide: [{ $subtract: ["$stopTime", "$startTime"] }, 1000] }, 60] },
+      duracaoEmMinutos: { $divide: [{ $subtract: ["$stopTime", "$startTime"] }, 1000 * 60] },
     },
   },
   {
