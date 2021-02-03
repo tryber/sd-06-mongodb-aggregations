@@ -12,7 +12,7 @@ db.movies.aggregate([
             "Julia Roberts",
             "Kevin Spacey",
             "George Clooneyy",
-          ]
+          ],
       },
     },
   },
@@ -28,10 +28,10 @@ db.movies.aggregate([
               "Julia Roberts",
               "Kevin Spacey",
               "George Clooneyy",
-            ]
+            ],
           ],
-        }
-      }
+        },
+      },
     },
   },
 
