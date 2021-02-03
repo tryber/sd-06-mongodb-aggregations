@@ -14,24 +14,16 @@ db.trips.aggregate([
   { $project: {
     dayObj: { $arrayElemAt: ["$MaxTripsDay", 0] },
     startStationName: 1,
-    startTime: 1 
+    startTime: 1,
   } },
   { $match: { $expr: {
-    $eq: ["$dayObj.diaDaSemanaMaisViagens", { $dayOfWeek: "$startTime" }]
+    $eq: ["$dayObj.diaDaSemanaMaisViagens", { $dayOfWeek: "$startTime" }],
   } } },
   { $group: {
     _id: "$startStationName",
-    total: { $sum: 1 }
+    total: { $sum: 1 },
   } },
   { $sort: { total: -1 } },
   { $limit: 1 },
-  { $project: { _id: 0, nomeEstacao: "$_id", total: 1 } }
+  { $project: { _id: 0, nomeEstacao: "$_id", total: 1 } },
 ]);
-
-
-{ $match: { $expr: {
-  $eq: [
-    "$MaxTripsDay.0.diaDaSemanaComMaisViagens",
-    { $dayOfWeek: "$startTime" },
-  ] } },
-}
