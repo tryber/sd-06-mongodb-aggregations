@@ -1,18 +1,29 @@
 db.trips.aggregate([
   { $lookup: {
     from: "trips",
-    let: { tripDate: "$startTime" },
+    let: { tripDay: { $dayOfWeek: "$startTime" } },
     pipeline: [
-      { $project: { dia: { $dayOfWeek: "$startTime" } } },
-      { $group: { _id: "$dia", totalX: { $sum: 1 } } },
-      { $sort: { totalX: -1 } },
+      { $project: { dayOfWeek: { $dayOfWeek: "$startTime" } } },
+      { $group: { _id: "$dayOfWeek", total: { $sum: 1 } } },
+      { $sort: { total: -1 } },
       { $limit: 1 },
-      { $match: { $expr: { $eq: [{ $dayOfWeek: "$$tripDate" }, "$_id"] } } },
+      { $project: { _id: 0, diaDaSemanaMaisViagens: "$_id" } },
     ],
-    as: "tripsInMaxDay",
+    as: "MaxTripsDay",
   } },
-  { $group: { _id: "$startStationName", total: { $sum: 1 } } },
-  { $project: { _id: 0, nomeEstacao: "$_id", total: 1 } },
+  { $project: {
+    dayObj: { $arrayElemAt: ["$MaxTripsDay", 0] },
+    startStationName: 1,
+    startTime: 1,
+  } },
+  { $match: { $expr: {
+    $eq: ["$dayObj.diaDaSemanaMaisViagens", { $dayOfWeek: "$startTime" }],
+  } } },
+  { $group: {
+    _id: "$startStationName",
+    total: { $sum: 1 },
+  } },
   { $sort: { total: -1 } },
   { $limit: 1 },
+  { $project: { _id: 0, nomeEstacao: "$_id", total: 1 } },
 ]);
