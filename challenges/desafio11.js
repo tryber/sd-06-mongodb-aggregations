@@ -1,4 +1,4 @@
-b.trips.aggregate([
+db.trips.aggregate([
   // {
   //   $match: {}
   // },
