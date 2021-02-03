@@ -28,3 +28,4 @@ db.trips.aggregate([
     $project: { duracaoMediaEmMinutos: { $round: ["$duracaoMediaEmMinutos", 0] }, _id: 0 },
   },
 ]);
+// teste
