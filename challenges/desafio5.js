@@ -19,9 +19,9 @@ db.movies.aggregate([
         $size:
         {
           $setIntersection:
-            [actors, "$cast"]
-        }
-      }
+            [actors, "$cast"],
+        },
+      },
     },
   },
   {
