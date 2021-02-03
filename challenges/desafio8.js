@@ -1,9 +1,25 @@
-// db.produtos.updateOne(
-//   { nome: "Quarteirão com Queijo" },
-//   { $pop: { ingredientes: -1 } },
-// );
-
-// db.produtos.find(
-//   {},
-//   { nome: 1, ingredientes: 1, _id: 0 },
-// );
+db.air_alliances.aggregate([
+  {
+    $lookup: {
+      from: "air_routes",
+      localField: "airlines",
+      foreignField: "airline.name",
+      as: "ARNew",
+    },
+  },
+  { $unwind: "$ARNew" },
+  {
+    $match: {
+      "ARNew.airplane": { $in: ["747", "380"] },
+    },
+  },
+  {
+    $group: {
+      _id: "$name",
+      totalRotas: { $sum: 1 },
+    },
+  },
+  { $sort: { totalRotas: -1 } },
+  { $limit: 1 },
+  { $project: { _id: 1, totalRotas: 1 } },
+]);
