@@ -1,25 +1,21 @@
-// db.air_alliances.aggregate([
-//   {
-//     $lookup: {
-//       from: "air_routes",
-//       localField: "airlines",
-//       foreignField: "airline.name",
-//       as: "ARNew",
-//     },
-//   },
-//   { $unwind: "$ARNew" },
-//   {
-//     $match: {
-//       "ARNew.airplane": { $in: ["747", "380"] }
-//     }
-//   },
-//   {
-//     $group: {
-//       _id: "$name",
-//       totalRotas: { $sum: 1 },
-//     }
-//   },
-//   { $sort: { totalRotas: -1 } },
-//   { $limit: 1 },
-//   { $project: { _id: 1, totalRotas: 1 } },
-// ]);
+db.trips.aggregate([
+  {
+    $match: {
+      birthYear: { $exists: true, $ne: "" },
+    },
+  },
+  {
+    $group: {
+      _id: null,
+      maiorAnoNascimento: { $max: { $toInt: "$birthYear" } },
+      menorAnoNascimento: { $min: "$birthYear" },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      maiorAnoNascimento: 1,
+      menorAnoNascimento: 1,
+    },
+  },
+]);
