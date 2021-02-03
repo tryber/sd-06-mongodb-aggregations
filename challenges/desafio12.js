@@ -9,14 +9,14 @@ db.trips.aggregate([
   },
   {
     $group: {
-      _id: { start: "$startStation", dayOFW: "$diaDaSemana" },
+      _id: { start: "$startStationName", dayOFW: "$diaDaSemana" },
       total: { $sum: 1 },
     },
   },
   {
     $project: {
       _id: false,
-      nomeEstacao: "$startStationName",
+      nomeEstacao: "$_id.start",
       total: "$total",
     },
   },
