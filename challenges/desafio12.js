@@ -1,7 +1,4 @@
 // b.trips.aggregate([
-  // {
-  // $match: {}
-  // },
 //   {
 //     $addFields: { diaDaSemana: { $dayOfWeek: "$startTime" } },
 //   },
