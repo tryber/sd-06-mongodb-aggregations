@@ -11,7 +11,7 @@ db.trips.aggregate([
     $group: {
       _id: {
         start: "$startStationName",
-        dayOfW: "$diaDaSemana"
+        dayOfW: "$diaDaSemana",
       },
       total: { $sum: 1 },
     },
