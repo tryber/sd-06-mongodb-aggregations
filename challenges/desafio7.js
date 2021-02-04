@@ -27,4 +27,4 @@ db.movies.aggregate([
       mediaIMDB: { $round: ["$mediaRating", 1] },
     },
   },
-]).pretty();
+]);
