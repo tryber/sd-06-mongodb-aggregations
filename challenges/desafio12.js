@@ -3,7 +3,7 @@ db.trips.aggregate([
     $addFields: { diaSemana: { $dayOfWeek: "$startTime" } },
   },
   {
-    $match: { diaSemana: 6 },
+    $match: { diaSemana: 5 },
   },
   {
     $group: { _id: "$startStationName", total: { $sum: 1 } },
