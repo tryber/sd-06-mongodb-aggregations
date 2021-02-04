@@ -1,8 +1,9 @@
 db.trips.aggregate([
   {
     $match: {
-      startTime: {$exists:true }
-  }
+      startTime: { $exists: true },
+    },
+  },
   {
     $group: {
       _id: { $dayOfWeek: "$startTime" },
