@@ -1,0 +1,4 @@
+Projeto Individual
+2 dias de projeto
+Prazo: 05/02/2021
+Link: https://github.com/tryber/sd-06-mongodb-aggregations
