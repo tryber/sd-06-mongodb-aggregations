@@ -1,1 +1,27 @@
-db.movies.aggregate([]);
+db.trips.aggregate([
+  {
+    $addFields: {
+      duracao: { $divide: [{ $subtract: ["$stopTime", "$startTime"] }, 1000 * 60 * 60] },
+    },
+  },
+  {
+    $group: {
+      _id: "$usertype",
+      avg_duracao: { $avg: "$duracao" },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      tipo: "$_id",
+      duracaoMedia: {
+        $round: ["$avg_duracao", 2],
+      },
+
+    },
+  },
+  { $sort: {
+    duracaoMedia: 1,
+  },
+  },
+]);
