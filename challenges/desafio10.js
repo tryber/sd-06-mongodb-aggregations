@@ -17,6 +17,9 @@ db.trips.aggregate([
       duracaoMedia: { $round: ["$duracaoMedia", 2] },
     },
   },
+  {
+    $sort: { duracaoMedia: 1 },
+  },
 ]);
 
 /* PR do Matheus me ajudou novamente na parte de manipulação das horas.
