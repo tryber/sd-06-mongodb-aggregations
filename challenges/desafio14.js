@@ -13,16 +13,16 @@ db.trips.aggregate([
   {
     $group: {
       _id: "$bikeid",
-      duracaoMediaEmMinutos: { $avg: { $ceil: { $multiply: ["$tempo", 60] } } },
+      duracaoMedia: { $avg: { $ceil: { $multiply: ["$tempo", 60] } } },
     },
   },
   {
-    $sort: { duracaoMediaEmMinutos: -1 },
+    $sort: { duracaoMedia: -1 },
   },
   {
     $limit: 5,
   },
   {
-    $project: { bikeid: "$_id", duracaoMediaEmMinutos: { $round: ["$duracaoMediaEmMinutos", 0] }, _id: 0 },
+    $project: { bikeid: "$_id", duracaoMedia: { $round: ["$duracaoMedia", 0] }, _id: 0 },
   },
 ]);
