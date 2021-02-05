@@ -1,10 +1,12 @@
 db.movies.aggregate([
-	{ $match: { $and:
-		[
-      { cast: { $exists: true } },
-      { "imdb.rating": { $exists: true } },
-      { languages: "English" },
-    ],
+  {
+    $match: {
+      $and:
+        [
+          { cast: { $exists: true } },
+          { "imdb.rating": { $exists: true } },
+          { languages: "English" },
+        ],
     },
   },
   {
@@ -18,15 +20,16 @@ db.movies.aggregate([
     },
   },
   {
-		$project:
-		{
+    $project:
+    {
       _id: 1,
       numeroFilmes: 1,
       mediaIMDB: { $round: ["$mediaIMDB", 1] },
     },
   },
-	{ $sort:
-		{
+  {
+    $sort:
+    {
       numeroFilmes: -1,
       _id: -1,
     },
