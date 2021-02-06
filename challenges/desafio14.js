@@ -23,6 +23,6 @@ db.trips.aggregate([
     $limit: 5,
   },
   {
-    $project: { bikeid: "$_id", duracaoMedia: { $round: ["$duracaoMedia", 0] }, _id: 0 },
+    $project: { bikeId: "$_id", duracaoMedia: { $round: ["$duracaoMedia", 0] }, _id: 0 },
   },
 ]);
