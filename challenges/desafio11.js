@@ -3,13 +3,13 @@ db.trips.aggregate([
   {
     $group: {
       _id: "$diaDaSemana",
-      total: { $sum: 1 },
+      totalViagens: { $sum: 1 },
     },
   },
   {
     $project: {
       diaDaSemana: "$_id",
-      total: true,
+      total: "$totalViagens",
       _id: false,
     },
   },
