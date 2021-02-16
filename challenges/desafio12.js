@@ -9,13 +9,13 @@ db.trips.aggregate([
   {
     $group: {
       _id: "$startStationName",
-      total: { $sum: 1 },
+      totalViagens: { $sum: 1 },
     },
   },
   {
     $project: {
       nomeEstacao: "$_id",
-      total: true,
+      total: "$totalViagens",
       _id: false,
     },
   },
