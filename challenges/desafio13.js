@@ -4,9 +4,9 @@ db.trips.aggregate([
       $expr: {
         $eq: [
           {
-            $dateToString: { format: "%Y-%m-%d", date: "$startTime" }
+            $dateToString: { format: "%Y-%m-%d", date: "$startTime" },
           },
-          "2016-03-10"
+          "2016-03-10",
         ],
       },
     },
