@@ -25,5 +25,5 @@ db.movies.aggregate(
         titulo: 1,
       },
     },
-  ]
+  ],
 );
