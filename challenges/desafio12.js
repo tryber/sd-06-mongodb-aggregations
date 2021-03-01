@@ -1,4 +1,3 @@
-
 db.trips.aggregate([
   {
     $addFields: {
@@ -27,12 +26,12 @@ db.trips.aggregate([
       total: "$total",
     },
   },
-  { 
+  {
     $sort: {
       total: -1,
-    } 
+    },
   },
-  { 
+  {
     $limit: 1,
   },
 ]);
