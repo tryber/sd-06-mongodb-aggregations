@@ -4,7 +4,7 @@ db.trips.aggregate([
       _id: {
         $dayOfWeek: "$startTime",
       },
-      total: { $sum: true },
+      total: { $sum: 1 },
     },
   },
   {
