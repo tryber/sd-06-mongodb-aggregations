@@ -30,4 +30,4 @@ db.movies.aggregate([
   },
 ]);
 
-//Regex pego no pull request da aluna Carla Nakajuni da T5.
+//  Regex pego no pull request da aluna Carla Nakajuni da T5.
